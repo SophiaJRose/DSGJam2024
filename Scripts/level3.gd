@@ -1,10 +1,10 @@
 extends Node2D
 
-var nextLevel = "res://Scenes/level2.tscn"
-var thisLevel = "res://Scenes/level1.tscn"
+var nextLevel = "res://Scenes/level4.tscn"
+var thisLevel = "res://Scenes/level3.tscn"
 
 func _on_door_level_exit():
-	get_tree().change_scene_to_file(nextLevel)
+	get_tree().change_scene_to_file(thisLevel)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

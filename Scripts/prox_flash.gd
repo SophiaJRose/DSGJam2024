@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var player = get_node("Player")
 @export var flashFadeTimer = 0
 @export var flashDistance = 128
 
