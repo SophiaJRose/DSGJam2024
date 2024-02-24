@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal flash(flashPosition)
 
-@export var walkSpeed = 384
+@export var walkSpeed = 256
 @export var jumpSpeed = 720
 @export var risingGrav = 32
 @export var fallingGrav = 64
