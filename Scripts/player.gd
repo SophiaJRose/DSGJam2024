@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 signal flash(flashPosition)
-
 @export var walkSpeed = 256
 @export var jumpSpeed = 720
 @export var risingGrav = 32
@@ -13,11 +12,6 @@ enum state {
 	JUMP
 }
 var playerState = state.STAND
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
