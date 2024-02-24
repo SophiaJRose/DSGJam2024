@@ -144,7 +144,7 @@ position = Vector2(480, 256)
 
 [node name="Clue" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(672, 284)
+position = Vector2(688, 284)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("3_md5vb")
 metadata/_edit_group_ = true
