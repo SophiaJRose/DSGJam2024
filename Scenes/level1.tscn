@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://p60jxfqxx3j6"]
+[gd_scene load_steps=9 format=3 uid="uid://p60jxfqxx3j6"]
 
 [ext_resource type="Texture2D" uid="uid://jynnx2sy10ft" path="res://Assets/WoodTilesheet.png" id="1_voltt"]
 [ext_resource type="PackedScene" uid="uid://dkg6hnkowfdxm" path="res://Scenes/player.tscn" id="2_8h4kj"]
 [ext_resource type="Script" path="res://Scripts/flash.gd" id="3_md5vb"]
 [ext_resource type="Texture2D" uid="uid://ci22k1klod8i6" path="res://Assets/TempPlayer.png" id="4_2jt74"]
+[ext_resource type="Script" path="res://Scripts/prox_flash.gd" id="5_tot54"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dff6u"]
 texture = ExtResource("1_voltt")
@@ -247,14 +248,25 @@ position = Vector2(80, 464)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 256)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="FlashTest" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(493, 330)
 scale = Vector2(3, 3)
 script = ExtResource("3_md5vb")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FlashTest"]
 sprite_frames = SubResource("SpriteFrames_4kcxq")
 
-[connection signal="flash" from="Player" to="Node2D" method="_on_player_flash"]
+[node name="ProxFlashTest" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(640, 364)
+scale = Vector2(3, 3)
+script = ExtResource("5_tot54")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ProxFlashTest"]
+sprite_frames = SubResource("SpriteFrames_4kcxq")
+
+[connection signal="flash" from="Player" to="FlashTest" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="ProxFlashTest" method="_on_player_flash"]

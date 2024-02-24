@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal flash
+signal flash(flashPosition)
 
 @export var walkSpeed = 384
 @export var jumpSpeed = 720
@@ -42,6 +42,6 @@ func _process(delta):
 		velocity.y += fallingGrav
 		
 	if Input.is_action_just_pressed("flash"):
-		flash.emit()
+		flash.emit(position)
 	
 	move_and_slide()
