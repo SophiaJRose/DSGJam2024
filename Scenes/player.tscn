@@ -1,16 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkg6hnkowfdxm"]
+[gd_scene load_steps=11 format=3 uid="uid://dkg6hnkowfdxm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8yq3b"]
-[ext_resource type="Texture2D" uid="uid://ci22k1klod8i6" path="res://Assets/TempPlayer.png" id="1_u6i0c"]
+[ext_resource type="Texture2D" uid="uid://c3qsho3ej4nx4" path="res://Assets/Player.png" id="2_sulou"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yigc8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8848"]
+atlas = ExtResource("2_sulou")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3urk"]
+atlas = ExtResource("2_sulou")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10uda"]
+atlas = ExtResource("2_sulou")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auy33"]
+atlas = ExtResource("2_sulou")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4griv"]
+atlas = ExtResource("2_sulou")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kirk4"]
+atlas = ExtResource("2_sulou")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k023g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_u6i0c")
+"texture": SubResource("AtlasTexture_e8848")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3urk")
+}],
+"loop": true,
+"name": &"Stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10uda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auy33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4griv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kirk4")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -24,7 +73,8 @@ script = ExtResource("1_8yq3b")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_yigc8")
+sprite_frames = SubResource("SpriteFrames_k023g")
+animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l1f8x")

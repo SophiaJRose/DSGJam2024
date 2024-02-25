@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dokc8bee154qh" path="res://Scenes/key.tscn" id="6_jdg8g"]
 [ext_resource type="Texture2D" uid="uid://doksrkfvx8qd" path="res://Assets/WoodTilesheetLight.png" id="6_oxue4"]
 [ext_resource type="PackedScene" uid="uid://b2i2hywp3x25p" path="res://Scenes/lock.tscn" id="7_osk1p"]
-[ext_resource type="Script" path="res://Scripts/LockPair.gd" id="8_wheot"]
+[ext_resource type="Script" path="res://Scripts/lockpair.gd" id="8_inucr"]
 [ext_resource type="Script" path="res://Scripts/flashkey.gd" id="9_2yoi3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mytse"]
@@ -155,7 +155,7 @@ collision_mask = 8
 sprite = "res://Assets/GreenLock.png"
 
 [node name="BlueLocks" type="Node2D" parent="Locks"]
-script = ExtResource("8_wheot")
+script = ExtResource("8_inucr")
 
 [node name="BlueLock" parent="Locks/BlueLocks" instance=ExtResource("7_osk1p")]
 position = Vector2(480, 64)
