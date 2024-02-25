@@ -1,6 +1,6 @@
 extends Node2D
 
-var nextLevel = "res://Scenes/level1.tscn"
+var nextLevel = "res://Scenes/ending.tscn"
 var thisLevel = "res://Scenes/level5.tscn"
 
 func _on_door_level_exit():
