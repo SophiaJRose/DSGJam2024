@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p60jxfqxx3j6"]
+[gd_scene load_steps=13 format=3 uid="uid://p60jxfqxx3j6"]
 
 [ext_resource type="Script" path="res://Scripts/level1.gd" id="1_i7jxv"]
 [ext_resource type="Texture2D" uid="uid://jynnx2sy10ft" path="res://Assets/WoodTilesheet.png" id="1_voltt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://doksrkfvx8qd" path="res://Assets/WoodTilesheetLight.png" id="6_oxue4"]
 [ext_resource type="Texture2D" uid="uid://hs8trrwgl1nx" path="res://Assets/Arrow.png" id="7_2j3ku"]
 [ext_resource type="PackedScene" uid="uid://briw4g4dqidq" path="res://Scenes/door.tscn" id="7_iqk7i"]
+[ext_resource type="Texture2D" uid="uid://cx7c121b8vu67" path="res://Assets/Cross.png" id="8_w2pmq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mytse"]
 texture = ExtResource("1_voltt")
@@ -136,15 +137,37 @@ position = Vector2(848, 424)
 [node name="Door3" parent="." instance=ExtResource("7_iqk7i")]
 position = Vector2(848, 168)
 
-[node name="Clue" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Clue" type="Node2D" parent="Node2D"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(688, 284)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("3_md5vb")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Clue"]
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Clue"]
 texture = ExtResource("7_2j3ku")
+
+[node name="Clue2" type="Node2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(688, 404)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_md5vb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Clue2"]
+texture = ExtResource("8_w2pmq")
+
+[node name="Clue3" type="Node2D" parent="Node2D"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(688, 160)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_md5vb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Clue3"]
+texture = ExtResource("8_w2pmq")
 
 [node name="Player" parent="." instance=ExtResource("2_8h4kj")]
 position = Vector2(80, 432)
@@ -163,4 +186,6 @@ F to open doors"
 
 [connection signal="levelExit" from="Door" to="." method="_on_door_level_exit"]
 [connection signal="flash" from="Player" to="FlashTileMap" method="_on_player_flash"]
-[connection signal="flash" from="Player" to="Clue" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Node2D/Clue" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Node2D/Clue2" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Node2D/Clue3" method="_on_player_flash"]
