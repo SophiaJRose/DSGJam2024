@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="DSG24Project"
+config/name="Flash In The Dark"
 run/main_scene="res://Scenes/level1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
