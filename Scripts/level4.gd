@@ -4,7 +4,7 @@ var nextLevel = "res://Scenes/level5.tscn"
 var thisLevel = "res://Scenes/level4.tscn"
 
 func _on_door_level_exit():
-	get_tree().change_scene_to_file(thisLevel)
+	get_tree().change_scene_to_file(nextLevel)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

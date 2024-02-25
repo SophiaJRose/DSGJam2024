@@ -152,6 +152,15 @@ position = Vector2(80, 432)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(480, 256)
 
+[node name="Label" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 249.0
+offset_bottom = 267.0
+text = "WASD to move
+E to flash light
+F to open doors"
+
 [connection signal="levelExit" from="Door" to="." method="_on_door_level_exit"]
 [connection signal="flash" from="Player" to="FlashTileMap" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="Clue" method="_on_player_flash"]
