@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dxmbyxloryyql"]
+[gd_scene load_steps=17 format=3 uid="uid://dxmbyxloryyql"]
 
 [ext_resource type="Script" path="res://Scripts/level4.gd" id="1_oohv8"]
 [ext_resource type="Texture2D" uid="uid://jynnx2sy10ft" path="res://Assets/WoodTilesheet.png" id="1_voltt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/prox_flash.gd" id="7_6yvtj"]
 [ext_resource type="PackedScene" uid="uid://x0gsd4aw5exp" path="res://Scenes/lockeddoor.tscn" id="8_8f8ip"]
 [ext_resource type="Script" path="res://Scripts/flashkey.gd" id="9_ago61"]
+[ext_resource type="Texture2D" uid="uid://cx7c121b8vu67" path="res://Assets/Cross.png" id="9_ogo15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mytse"]
 texture = ExtResource("1_voltt")
@@ -138,16 +139,38 @@ trueDoor = true
 flashFadeTimer = 0
 flashDistance = 128
 
-[node name="Clue" type="Node2D" parent="."]
+[node name="Clues" type="Node2D" parent="."]
+
+[node name="Clue" type="Node2D" parent="Clues"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(480, 256)
-rotation = 4.71239
+rotation = -1.5708
 scale = Vector2(1.5, 1.5)
 script = ExtResource("7_6yvtj")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Clue"]
+[node name="Sprite2D" type="Sprite2D" parent="Clues/Clue"]
 texture = ExtResource("7_2j3ku")
+
+[node name="Clue2" type="Node2D" parent="Clues"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(96, 384)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_6yvtj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Clues/Clue2"]
+texture = ExtResource("9_ogo15")
+
+[node name="Clue3" type="Node2D" parent="Clues"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(864, 384)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_6yvtj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Clues/Clue3"]
+texture = ExtResource("9_ogo15")
 
 [node name="Player" parent="." instance=ExtResource("2_8h4kj")]
 position = Vector2(80, 176)
@@ -167,5 +190,7 @@ flashDistance = 128
 [connection signal="levelExit" from="LockedDoor" to="." method="_on_door_level_exit"]
 [connection signal="flash" from="Player" to="FlashTileMap" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="LockedDoor" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Clues/Clue" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="Key" method="_on_player_flash"]
-[connection signal="flash" from="Player" to="Clue" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Clues/Clue2" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Clues/Clue3" method="_on_player_flash"]

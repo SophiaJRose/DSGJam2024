@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/key.gd" id="1_46f6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hnnv"]
-size = Vector2(32, 16)
+size = Vector2(34, 16)
 
 [node name="Key" type="Area2D"]
 script = ExtResource("1_46f6h")

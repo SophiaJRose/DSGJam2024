@@ -1,7 +1,7 @@
 extends Node2D
 
-var nextLevel = "res://Scenes/level4.tscn"
-var thisLevel = "res://Scenes/level3.tscn"
+var nextLevel = "res://Scenes/level1.tscn"
+var thisLevel = "res://Scenes/level5.tscn"
 
 func _on_door_level_exit():
 	get_tree().change_scene_to_file(nextLevel)
