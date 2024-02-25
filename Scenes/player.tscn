@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkg6hnkowfdxm"]
+[gd_scene load_steps=15 format=3 uid="uid://dkg6hnkowfdxm"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8yq3b"]
 [ext_resource type="Texture2D" uid="uid://c3qsho3ej4nx4" path="res://Assets/Player.png" id="2_sulou"]
+[ext_resource type="Texture2D" uid="uid://deaegex13icy" path="res://Assets/Lightbulb.png" id="3_j3wc2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8848"]
 atlas = ExtResource("2_sulou")
@@ -66,15 +67,47 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1f8x"]
 size = Vector2(16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_skd3p"]
+atlas = ExtResource("3_j3wc2")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tv2y"]
+atlas = ExtResource("3_j3wc2")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m0k4j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skd3p")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tv2y")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_8yq3b")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k023g")
 animation = &"Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l1f8x")
+
+[node name="Lightbulb" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, -12)
+sprite_frames = SubResource("SpriteFrames_m0k4j")
+animation = &"off"

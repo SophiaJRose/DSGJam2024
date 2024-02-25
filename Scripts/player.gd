@@ -6,7 +6,11 @@ signal flash(flashPosition)
 @export var risingGrav = 32
 @export var fallingGrav = 64
 var direction = false # true is left, false is right
-@onready var animations = get_node("AnimatedSprite2D")
+@onready var animations = get_node("CharacterSprite")
+@onready var lightbulb = get_node("Lightbulb")
+var flashCooldown = 0
+var cooldownLengths = [60, 120, 180, 300, 480, 600]
+var numFlashes = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,8 +37,16 @@ func _process(delta):
 	else:
 		velocity.y += fallingGrav
 		
-	if Input.is_action_just_pressed("flash"):
+	if Input.is_action_just_pressed("flash") and flashCooldown == 0:
+		flashCooldown = cooldownLengths[clamp(numFlashes, 0, 5)]
+		numFlashes += 1
+		lightbulb.play("off")
 		flash.emit(position)
+		
+	if flashCooldown != 0:
+		flashCooldown -= 1
+	else:
+		lightbulb.play("on")
 	
 	move_and_slide()
 	
