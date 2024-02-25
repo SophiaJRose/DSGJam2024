@@ -10,3 +10,5 @@ func _on_door_level_exit():
 func _process(delta):
 	if Input.is_action_just_pressed("restart"):
 		get_tree().change_scene_to_file(thisLevel)
+	if Input.is_action_just_pressed("close_game"):
+		get_tree().quit()
