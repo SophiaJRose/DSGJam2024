@@ -139,12 +139,26 @@ trueDoor = true
 flashFadeTimer = 0
 flashDistance = 128
 
+[node name="LockedDoor2" parent="." instance=ExtResource("8_8f8ip")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(96, 424)
+script = ExtResource("6_ij81u")
+flashFadeTimer = 0
+flashDistance = 128
+
+[node name="LockedDoor3" parent="." instance=ExtResource("8_8f8ip")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(864, 424)
+script = ExtResource("6_ij81u")
+flashFadeTimer = 0
+flashDistance = 128
+
 [node name="Clues" type="Node2D" parent="."]
 
 [node name="Clue" type="Node2D" parent="Clues"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(480, 256)
-rotation = -1.5708
+rotation = 1.5708
 scale = Vector2(1.5, 1.5)
 script = ExtResource("7_6yvtj")
 metadata/_edit_group_ = true
@@ -154,7 +168,7 @@ texture = ExtResource("7_2j3ku")
 
 [node name="Clue2" type="Node2D" parent="Clues"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(96, 384)
+position = Vector2(96, 352)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("7_6yvtj")
 metadata/_edit_group_ = true
@@ -164,13 +178,35 @@ texture = ExtResource("9_ogo15")
 
 [node name="Clue3" type="Node2D" parent="Clues"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(864, 384)
+position = Vector2(864, 352)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("7_6yvtj")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Clues/Clue3"]
 texture = ExtResource("9_ogo15")
+
+[node name="Clue4" type="Node2D" parent="Clues"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(272, 128)
+rotation = -0.785398
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_6yvtj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Clues/Clue4"]
+texture = ExtResource("7_2j3ku")
+
+[node name="Clue5" type="Node2D" parent="Clues"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(688, 128)
+rotation = 3.92699
+scale = Vector2(1.5, 1.5)
+script = ExtResource("7_6yvtj")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Clues/Clue5"]
+texture = ExtResource("7_2j3ku")
 
 [node name="Player" parent="." instance=ExtResource("2_8h4kj")]
 position = Vector2(80, 176)
@@ -188,9 +224,15 @@ flashFadeTimer = 0
 flashDistance = 128
 
 [connection signal="levelExit" from="LockedDoor" to="." method="_on_door_level_exit"]
+[connection signal="levelExit" from="LockedDoor2" to="." method="_on_door_level_exit"]
+[connection signal="levelExit" from="LockedDoor3" to="." method="_on_door_level_exit"]
 [connection signal="flash" from="Player" to="FlashTileMap" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="LockedDoor" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="Clues/Clue" method="_on_player_flash"]
-[connection signal="flash" from="Player" to="Key" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="Clues/Clue2" method="_on_player_flash"]
 [connection signal="flash" from="Player" to="Clues/Clue3" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Key" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Clues/Clue4" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="Clues/Clue5" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="LockedDoor2" method="_on_player_flash"]
+[connection signal="flash" from="Player" to="LockedDoor3" method="_on_player_flash"]
