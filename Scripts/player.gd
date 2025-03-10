@@ -3,8 +3,8 @@ extends CharacterBody2D
 signal flash(flashPosition)
 @export var walkSpeed = 256
 @export var jumpSpeed = 736
-@export var risingGrav = 32
-@export var fallingGrav = 64
+@export var risingGrav = 1920
+@export var fallingGrav = 3840
 var direction = false # true is left, false is right
 @onready var animations = get_node("CharacterSprite")
 @onready var lightbulb = get_node("Lightbulb")
@@ -33,9 +33,9 @@ func _process(delta):
 	if velocity.y <= 0 and !Input.is_action_pressed("jump"):
 		velocity.y /= 2
 	if velocity.y <= 0 and Input.is_action_pressed("jump"):
-		velocity.y += risingGrav
+		velocity.y += risingGrav * delta
 	else:
-		velocity.y += fallingGrav
+		velocity.y += fallingGrav * delta
 		
 	if Input.is_action_just_pressed("flash") and flashCooldown == 0:
 		flashCooldown = cooldownLengths[clamp(numFlashes, 0, 5)]
